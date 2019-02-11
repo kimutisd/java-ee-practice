@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Player.findAll", query = "select a from Player as a")
+})
 @Table(name = "PLAYER")
 public class Player implements Serializable {
 

@@ -12,5 +12,9 @@
             <li>#{player.name}</li>
         </ui:repeat>
     </ol>
+    <h:form>
+        <h:inputText value="#{players.playerToCreate.name}" required="true" />
+        <h:commandButton value="Add new player" action="#{players.createPlayer}" />
+    </h:form>
 </h:body>
 </html>
