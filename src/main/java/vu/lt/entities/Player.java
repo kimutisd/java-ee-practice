@@ -20,6 +20,10 @@ public class Player implements Serializable {
     @Column(name = "NAME")
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name="TEAM_ID")
+    private Team team;
+
     public Player() {
     }
 
@@ -41,6 +45,14 @@ public class Player implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
     @Override
