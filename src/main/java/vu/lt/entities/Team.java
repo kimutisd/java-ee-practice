@@ -1,11 +1,18 @@
 package vu.lt.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Team.findAll", query = "select t from Team as t")
+})
 @Table(name = "TEAM")
+@Getter @Setter
 public class Team {
 
     public Team(){
@@ -14,36 +21,12 @@ public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
 
     private String name;
 
     @OneToMany(mappedBy = "team")
     private List<Player> players;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(List<Player> players) {
-        this.players = players;
-    }
 
     @Override
     public boolean equals(Object o) {
