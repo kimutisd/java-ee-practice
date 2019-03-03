@@ -31,7 +31,7 @@ public class Teams {
     @Transactional
     public String createTeam(){
         this.teamsDAO.persist(teamToCreate);
-        return "success";
+        return "index?faces-redirect=true";
     }
 
     private void loadAllTeams(){

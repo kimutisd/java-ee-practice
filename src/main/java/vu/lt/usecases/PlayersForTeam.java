@@ -42,6 +42,6 @@ public class PlayersForTeam implements Serializable {
     public String createPlayer() {
         playerToCreate.setTeam(this.team);
         playersDAO.persist(playerToCreate);
-        return "/players.xhtml?faces-redirect=true&teamId=" + this.team.getId();
+        return "players?faces-redirect=true&teamId=" + this.team.getId();
     }
 }
