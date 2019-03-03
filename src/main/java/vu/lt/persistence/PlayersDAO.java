@@ -12,14 +12,6 @@ public class PlayersDAO {
     @PersistenceContext
     private EntityManager em;
 
-    public List<Player> loadAll() {
-        return em.createNamedQuery("Player.findAll", Player.class).getResultList();
-    }
-
-    public void setEm(EntityManager em) {
-        this.em = em;
-    }
-
     public void persist(Player player){
         this.em.persist(player);
     }

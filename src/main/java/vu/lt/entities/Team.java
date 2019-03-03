@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,8 +26,8 @@ public class Team {
 
     private String name;
 
-    @OneToMany(mappedBy = "team")
-    private List<Player> players;
+    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
+    private List<Player> players = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {

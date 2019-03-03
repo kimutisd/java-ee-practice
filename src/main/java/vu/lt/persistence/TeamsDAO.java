@@ -25,5 +25,7 @@ public class TeamsDAO {
         this.em.persist(team);
     }
 
-    public Team findOne(Integer id) { return em.find(Team.class, id); }
+    public Team findOne(Integer id) {
+        return em.find(Team.class, id);
+    }
 }
