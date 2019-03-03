@@ -26,7 +26,7 @@ public class Team {
 
     private String name;
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "team")
     private List<Player> players = new ArrayList<>();
 
     @Override
