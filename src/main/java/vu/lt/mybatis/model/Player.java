@@ -1,4 +1,4 @@
-package vu.lt.persistence.mybatis.model;
+package vu.lt.mybatis.model;
 
 public class Player {
     /**
