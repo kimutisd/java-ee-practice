@@ -10,7 +10,9 @@
     <h2>Players playing in #{playersForTeam.team.name} team:</h2>
     <ol>
         <ui:repeat value="#{playersForTeam.team.players}" var="player">
-            <li>#{player.name}</li>
+            <li>
+                <h:link value="#{player.name} #{player.jerseyNumber}" outcome="playerDetails?playerId=#{player.id}" />
+            </li>
         </ui:repeat>
     </ol>
     <h:form>
