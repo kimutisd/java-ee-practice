@@ -9,8 +9,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 @SessionScoped
 @Named
@@ -18,13 +18,15 @@ public class GeneratePlayerJerseyNumber implements Serializable {
     @Inject
     JerseyNumberGenerator jerseyNumberGenerator;
 
-    private Future<Integer> jerseyNumberGenerationTask = null;
+    private CompletableFuture<Integer> jerseyNumberGenerationTask = null;
 
     @LoggedInvocation
     public String generateNewJerseyNumber() {
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        jerseyNumberGenerationTask = jerseyNumberGenerator.generateJerseyNumber();
+
+        jerseyNumberGenerationTask = CompletableFuture.supplyAsync(() -> jerseyNumberGenerator.generateJerseyNumber());
+
         return  "/playerDetails.xhtml?faces-redirect=true&playerId=" + requestParameters.get("playerId");
     }
 
